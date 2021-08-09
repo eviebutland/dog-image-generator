@@ -16,10 +16,6 @@ export default {
   components: {
     RandomImage
   },
-  key(route) {
-    console.log(route)
-    return route.fullPath
-  },
   head: {
     title: 'Random dog image',
     meta: [

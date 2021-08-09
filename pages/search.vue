@@ -1,7 +1,13 @@
 <template>
-  <div class="p-5">
-    <SearchDog :allBreeds="breeds"/>
-  </div>
+  <section>
+    <div class="p-5">
+      <SearchDog :allBreeds="breeds"/>
+    </div>
+    <div>
+      {{$store.state.currentBreed}} 
+      <!-- Changing pages means this is cleared? -->
+    </div>
+  </section>
 </template>
 
 <script>

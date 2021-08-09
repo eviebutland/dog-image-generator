@@ -5,6 +5,9 @@
         :selectedBreedImage="selectedBreedImage" 
         @filter-breed="findSelectedBreed"
       />
+      <div>
+      {{$store.state.currentBreed}}
+    </div>
   </div>
 </template>
 
@@ -37,6 +40,7 @@ export default {
     SelectDog
   },
   async created() {
+    console.log(this.$store.state)
     this.$store.commit('updateBreeds', await this.getAllDogBreeds)
     this.breeds = this.$store.state.breeds
   },
@@ -48,12 +52,14 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'updateBreeds'
+      'updateBreeds',
+      'updateCurrentBreed'
     ]),
     async findSelectedBreed(selectedBreed) {
       try {
         const res = await axios.get(`https://dog.ceo/api/breed/${selectedBreed}/images/random`)
         this.selectedBreedImage = res.data.message
+        this.$store.commit('updateCurrentBreed', selectedBreed)
       } catch (error) {
         console.log(error)
       }

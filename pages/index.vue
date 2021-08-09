@@ -6,7 +6,7 @@
     <NuxtLink to="/random">Get random dog image</NuxtLink>
     <NuxtLink to="/search">Search for dog breeds</NuxtLink>
     <NuxtLink to="/select">Select breed to get dog image</NuxtLink>
-    <NuxtChild :mySelectedBreed="mySelectedBreed" />
+    <NuxtChild/>
   </div>
 </template>
 
@@ -17,11 +17,6 @@ import DefaultLayout from '../layouts/default.vue'
 export default {
   name: 'Home',
   template: DefaultLayout,
-  data(){
-    return {
-      mySelectedBreed: '',
-    }
-  },
   async created() {
     this.$store.commit('updateBreeds', await this.$store.getters.getAllDogBreeds)
     console.log(this.$store.state.breeds)
