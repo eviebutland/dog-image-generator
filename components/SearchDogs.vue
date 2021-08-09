@@ -16,7 +16,7 @@
 </template>
 <script>
 export default {
-  name: 'Search',
+  name: 'SearchDog',
   props: {
     allBreeds: []
   },
